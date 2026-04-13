@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-base text-white font-sans;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  select option {
+    background-color: #1E293B;
+  }
+}
+
+@layer components {
+  .card-glass {
+    @apply rounded-2xl bg-white/10 border border-white/10;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+  }
+
+  .btn-primary {
+    @apply w-full py-4 rounded-xl font-semibold text-white bg-emergency hover:bg-red-600 min-h-touch flex items-center justify-center gap-2 active:scale-95 transition-transform duration-150 disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply w-full py-4 rounded-xl font-semibold text-white bg-card/80 border border-white/10 min-h-touch flex items-center justify-center gap-2 active:scale-95 transition-transform duration-150;
+  }
+
+  .input-field {
+    @apply w-full bg-card/60 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-muted focus:outline-none focus:ring-2 focus:ring-emergency focus:border-transparent min-h-touch transition-all duration-150;
+  }
+
+  .severity-btn {
+    @apply flex-1 py-3 rounded-xl font-medium text-sm border-2 transition-all duration-150 min-h-touch;
+  }
+
+  .tab-btn {
+    @apply flex-1 py-2.5 text-sm font-medium rounded-lg transition-colors duration-150;
+  }
+
+  .tab-btn-active {
+    @apply bg-emergency/20 text-emergency;
+  }
+
+  .tab-btn-inactive {
+    @apply text-muted;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Leaflet dark-mode fix */
+.leaflet-container {
+  background: #1E293B;
+  font-family: 'Inter', sans-serif;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #1E293B;
+  color: #F8FAFC;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.leaflet-popup-tip {
+  background: #1E293B;
+}
