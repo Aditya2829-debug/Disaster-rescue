@@ -30,7 +30,7 @@ export default function Login() {
 
       if (isRegistering) {
         // Register flow
-        const res = await fetch('/api/auth/register', {
+        const res = await fetch(`${API_URL}/api/auth/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: form.name, email: form.email, password: form.password, role: form.role }),

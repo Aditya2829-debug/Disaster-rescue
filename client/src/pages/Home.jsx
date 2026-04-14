@@ -14,11 +14,10 @@ export default function Home() {
   return (
     <div className="relative min-h-screen flex flex-col pb-24">
 
-      {/* 🌌 Background ONLY for Home */}
-      <BackgroundEffect />
 
       {/* 🌟 Main Content */}
       <div className="relative z-10 flex flex-col min-h-screen">
+
 
         {/* Header */}
         <header className="flex items-center justify-between px-5 pt-10 pb-3 backdrop-blur-md bg-black/20">
