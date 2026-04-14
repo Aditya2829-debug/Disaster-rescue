@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../store/authStore';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function Login() {
   const [isRegistering, setIsRegistering] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', password: '', role: 'field_worker' });
@@ -36,7 +38,7 @@ export default function Login() {
         await handleResponse(res);
 
         // Auto-login after successful registration
-        const loginRes = await fetch('/api/auth/login', {
+        const loginRes = await fetch(`${API_URL}/api/auth/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: form.email, password: form.password }),
@@ -53,7 +55,7 @@ export default function Login() {
 
       } else {
         // Login flow
-        const res = await fetch('/api/auth/login', {
+        const res = await fetch(`${API_URL}/api/auth/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: form.email, password: form.password }),
@@ -76,8 +78,12 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent backdrop-blur-md flex items-center justify-center p-5">
-      <div className="card-glass p-8 w-full max-w-sm shadow-2xl border border-white/10 backdrop-blur-xl">
+    <div className="min-h-screen bg-[#0b1220] flex items-center justify-center p-5">
+      <div className="w-full max-w-sm p-8 rounded-3xl 
+          bg-[#111827]/90 
+          border border-white/10 
+          shadow-[0_0_40px_rgba(0,0,0,0.6)] 
+          backdrop-blur-lg">
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="text-6xl mb-3">🆘</div>
