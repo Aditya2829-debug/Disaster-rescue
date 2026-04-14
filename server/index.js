@@ -12,31 +12,12 @@ const app = express();
 
 connectDB();
 
-// ✅ Allowed origins
-const allowedOrigins = [
-  process.env.CLIENT_URL, // from env (Vercel URL)
-  'http://localhost:5173',
-  'http://127.0.0.1:5173'
-].filter(Boolean);
-
-// ✅ CORS FIX (important)
+// ✅ SIMPLE WORKING CORS (fixes your issue)
 app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (postman, mobile apps)
-    if (!origin) return callback(null, true);
-
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    } else {
-      console.log("❌ Blocked by CORS:", origin);
-      return callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-
-// ✅ VERY IMPORTANT for preflight requests
-app.options('*', cors());
 
 app.use(express.json({ limit: '2mb' }));
 
